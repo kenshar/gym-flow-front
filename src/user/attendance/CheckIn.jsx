@@ -1,140 +1,121 @@
-import { useState, useEffect } from 'react';
-import { checkIn, checkOut, getTodayAttendance } from '../../api/attendance.api';
+import { useState } from 'react';
+import { checkIn } from '../../api/attendance.api';
+import { useAuth } from '../../auth/AuthContext';
+import './CheckIn.css';
 
-const CheckIn = () => {
-  const [todayStatus, setTodayStatus] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [processing, setProcessing] = useState(false);
+export default function CheckIn() {
+  const { user } = useAuth();
+  const [memberId, setMemberId] = useState('');
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    fetchTodayStatus();
-  }, []);
+  const handleCheckIn = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setMessage('');
+    setError('');
 
-  const fetchTodayStatus = async () => {
     try {
-      const data = await getTodayAttendance();
-      setTodayStatus(data);
+      const response = await checkIn(memberId || user?.id);
+      setMessage(response.message || 'Check-in successful! 🎉');
+      setMemberId('');
+      
+      // Clear success message after 3 seconds
+      setTimeout(() => setMessage(''), 3000);
     } catch (err) {
-      if (err.response?.status !== 404) {
-        setError('Failed to load status');
-      }
+      const errorMsg = err.response?.data?.message || 'Check-in failed. Please try again.';
+      setError(errorMsg);
+      
+      // Clear error message after 5 seconds
+      setTimeout(() => setError(''), 5000);
     } finally {
       setLoading(false);
     }
   };
 
-  const handleCheckIn = async () => {
-    setProcessing(true);
+  const handleQuickCheckIn = async () => {
+    if (!user?.id) {
+      setError('User not authenticated');
+      return;
+    }
+
+    setLoading(true);
     setMessage('');
     setError('');
 
     try {
-      const data = await checkIn();
-      setTodayStatus(data);
-      setMessage('Successfully checked in!');
+      const response = await checkIn(user.id);
+      setMessage(response.message || 'Check-in successful! 🎉');
+      setTimeout(() => setMessage(''), 3000);
     } catch (err) {
-      setError(err.response?.data?.message || 'Failed to check in');
+      const errorMsg = err.response?.data?.message || 'Check-in failed. Please try again.';
+      setError(errorMsg);
+      setTimeout(() => setError(''), 5000);
     } finally {
-      setProcessing(false);
+      setLoading(false);
     }
   };
-
-  const handleCheckOut = async () => {
-    setProcessing(true);
-    setMessage('');
-    setError('');
-
-    try {
-      const data = await checkOut();
-      setTodayStatus(data);
-      setMessage('Successfully checked out!');
-    } catch (err) {
-      setError(err.response?.data?.message || 'Failed to check out');
-    } finally {
-      setProcessing(false);
-    }
-  };
-
-  if (loading) {
-    return <div className="loading">Loading...</div>;
-  }
-
-  const isCheckedIn = todayStatus && !todayStatus.check_out;
-  const hasCompleted = todayStatus && todayStatus.check_out;
 
   return (
-    <div className="check-in-page">
-      <h1>Attendance</h1>
-
-      {error && <div className="error-message">{error}</div>}
-      {message && <div className="success-message">{message}</div>}
-
-      <div className="check-in-card">
-        <div className="current-time">
-          <p className="time">{new Date().toLocaleTimeString()}</p>
-          <p className="date">{new Date().toLocaleDateString('en-US', {
-            weekday: 'long',
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-          })}</p>
-        </div>
-
-        <div className="status-display">
-          {isCheckedIn ? (
-            <>
-              <div className="status-indicator active"></div>
-              <p className="status-text">Currently Checked In</p>
-              <p className="status-detail">
-                Since {new Date(todayStatus.check_in).toLocaleTimeString()}
-              </p>
-            </>
-          ) : hasCompleted ? (
-            <>
-              <div className="status-indicator completed"></div>
-              <p className="status-text">Session Completed</p>
-              <p className="status-detail">
-                {new Date(todayStatus.check_in).toLocaleTimeString()} -{' '}
-                {new Date(todayStatus.check_out).toLocaleTimeString()}
-              </p>
-            </>
-          ) : (
-            <>
-              <div className="status-indicator inactive"></div>
-              <p className="status-text">Not Checked In</p>
-              <p className="status-detail">Ready to start your session?</p>
-            </>
-          )}
-        </div>
-
-        <div className="check-in-actions">
-          {isCheckedIn ? (
-            <button
-              onClick={handleCheckOut}
-              disabled={processing}
-              className="btn btn-large btn-danger"
+    <div className="checkin-container">
+      <div className="checkin-card">
+        <h2>Member Check-In</h2>
+        
+        {/* Quick check-in for logged-in users */}
+        {user && (
+          <div className="quick-checkin-section">
+            <h3>Welcome, {user.name}!</h3>
+            <button 
+              onClick={handleQuickCheckIn} 
+              disabled={loading}
+              className="quick-checkin-btn"
             >
-              {processing ? 'Processing...' : 'Check Out'}
+              {loading ? 'Checking in...' : 'Quick Check-In'}
             </button>
-          ) : !hasCompleted ? (
-            <button
-              onClick={handleCheckIn}
-              disabled={processing}
-              className="btn btn-large btn-primary"
-            >
-              {processing ? 'Processing...' : 'Check In'}
-            </button>
-          ) : (
-            <p className="completed-message">
-              Great job today! See you next time.
-            </p>
-          )}
+          </div>
+        )}
+
+        <div className="divider">
+          <span>OR</span>
         </div>
+
+        {/* Manual member ID check-in */}
+        <form onSubmit={handleCheckIn} className="checkin-form">
+          <div className="form-group">
+            <label htmlFor="memberId">Member ID</label>
+            <input
+              type="number"
+              id="memberId"
+              placeholder="Enter Member ID"
+              value={memberId}
+              onChange={(e) => setMemberId(e.target.value)}
+              required
+              disabled={loading}
+            />
+          </div>
+          
+          <button type="submit" disabled={loading} className="submit-btn">
+            {loading ? 'Checking in...' : 'Check In'}
+          </button>
+        </form>
+
+        {/* Success message */}
+        {message && (
+          <div className="alert alert-success">
+            <span className="icon">✓</span>
+            {message}
+          </div>
+        )}
+
+        {/* Error message */}
+        {error && (
+          <div className="alert alert-error">
+            <span className="icon">✕</span>
+            {error}
+          </div>
+        )}
       </div>
     </div>
   );
-};
-
-export default CheckIn;
+}

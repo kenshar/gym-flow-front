@@ -1,17 +1,14 @@
 import api from './axios';
 
-export const checkIn = async () => {
-  const response = await api.post('/attendance/check-in');
+export const checkIn = async (memberId) => {
+  const response = await api.post('/attendance/checkin', {
+    member_id: memberId,
+  });
   return response.data;
 };
 
-export const checkOut = async () => {
-  const response = await api.post('/attendance/check-out');
-  return response.data;
-};
-
-export const getAttendanceHistory = async (params = {}) => {
-  const response = await api.get('/attendance', { params });
+export const getAttendanceHistory = async (memberId) => {
+  const response = await api.get(`/attendance/history/${memberId}`);
   return response.data;
 };
 
@@ -20,7 +17,7 @@ export const getTodayAttendance = async () => {
   return response.data;
 };
 
-export const getAttendanceStats = async (params = {}) => {
-  const response = await api.get('/attendance/stats', { params });
+export const getMyAttendance = async () => {
+  const response = await api.get('/attendance/my-history');
   return response.data;
 };
