@@ -1,19 +1,7 @@
 import axios from 'axios';
 
-const getApiUrl = () => {
-  // Use env variable if set, otherwise detect environment
-  if (import.meta.env.VITE_API_URL) {
-    return import.meta.env.VITE_API_URL;
-  }
-  // Production deployment on GitHub Pages
-  if (window.location.hostname === 'kenshar.github.io') {
-    return 'https://gymflow-backend-2.onrender.com/api';
-  }
-  // Local development
-  return 'http://localhost:5000/api';
-};
-
-const API_BASE_URL = getApiUrl();
+// Production API URL
+const API_BASE_URL = 'https://gymflow-backend-2.onrender.com/api';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -41,7 +29,7 @@ api.interceptors.response.use(
     if (error.response?.status === 401) {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
-      window.location.href = '/login';
+      window.location.href = '/gym-flow-front/login';
     }
     return Promise.reject(error);
   }
