@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { checkIn } from '../../api/attendance.api';
 import { useAuth } from '../../auth/AuthContext';
-import './CheckIn.css';
+import './Checkin.css';
 
 export default function CheckIn() {
   const { user } = useAuth();

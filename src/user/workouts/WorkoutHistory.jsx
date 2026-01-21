@@ -80,6 +80,9 @@ const WorkoutHistory = () => {
               <div className="workout-header">
                 <h3>{workout.type}</h3>
                 <span className="workout-date">{formatDate(workout.date)}</span>
+                {workout.member && (
+                  <div className="workout-member">{workout.member.firstName || workout.member.name || workout.member.email}</div>
+                )}
               </div>
 
               <div className="workout-details">
