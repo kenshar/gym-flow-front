@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useAuth } from '../../auth/AuthContext';
+import { getMembers } from '../../api/members.api';
 import { getWorkout, createWorkout, updateWorkout, getWorkoutTypes } from '../../api/workouts.api';
 
 const WorkoutForm = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const isEditing = Boolean(id);
+  const { user, isAdmin } = useAuth();
 
   const [workoutTypes, setWorkoutTypes] = useState([]);
   const [formData, setFormData] = useState({
@@ -15,16 +18,23 @@ const WorkoutForm = () => {
     calories: '',
     notes: '',
     exercises: [],
+    memberId: '',
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [members, setMembers] = useState([]);
+  const [validationErrors, setValidationErrors] = useState({});
 
   useEffect(() => {
     fetchWorkoutTypes();
     if (isEditing) {
       fetchWorkout();
     }
-  }, [id]);
+    // If not editing and user is present, set default member for non-admins
+    if (!isEditing && user && !isAdmin()) {
+      setFormData((prev) => ({ ...prev, memberId: user.memberId || user.id }));
+    }
+  }, [id, user]);
 
   const fetchWorkoutTypes = async () => {
     try {
@@ -42,6 +52,22 @@ const WorkoutForm = () => {
         { name: 'Other' },
       ]);
     }
+    // If admin, also fetch members for linking workouts
+    if (isAdmin()) {
+      fetchMembers();
+    }
+  };
+
+  const fetchMembers = async () => {
+    try {
+      const list = await getMembers();
+      setMembers(list || []);
+      if (!isEditing && list && list.length > 0 && !formData.memberId) {
+        setFormData((prev) => ({ ...prev, memberId: list[0].id }));
+      }
+    } catch (err) {
+      // ignore - members optional for non-admins
+    }
   };
 
   const fetchWorkout = async () => {
@@ -55,6 +81,7 @@ const WorkoutForm = () => {
         calories: data.calories || '',
         notes: data.notes || '',
         exercises: data.exercises || [],
+        memberId: data.memberId || data.member_id || '',
       });
     } catch (err) {
       setError('Failed to load workout');
@@ -66,6 +93,30 @@ const WorkoutForm = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const validateExercises = (exercises) => {
+    const errors = {};
+    for (let i = 0; i < exercises.length; i++) {
+      const ex = exercises[i];
+      if (!ex.name || ex.name.trim() === '') {
+        errors[i] = `Exercise #${i + 1} is missing a name`;
+        continue;
+      }
+      if (ex.sets !== '' && (!Number.isInteger(Number(ex.sets)) || Number(ex.sets) < 1)) {
+        errors[i] = `Sets must be an integer >= 1`;
+        continue;
+      }
+      if (ex.reps !== '' && (!Number.isInteger(Number(ex.reps)) || Number(ex.reps) < 1)) {
+        errors[i] = `Reps must be an integer >= 1`;
+        continue;
+      }
+      if (ex.weight !== '' && (isNaN(Number(ex.weight)) || Number(ex.weight) < 0)) {
+        errors[i] = `Weight must be a number >= 0`;
+        continue;
+      }
+    }
+    return errors;
   };
 
   const addExercise = () => {
@@ -100,6 +151,26 @@ const WorkoutForm = () => {
     setLoading(true);
 
     try {
+      // client-side validation for exercises
+      const exerciseErrors = validateExercises(formData.exercises || []);
+      setValidationErrors(exerciseErrors);
+      if (Object.keys(exerciseErrors).length > 0) {
+        setError('Please fix exercise errors');
+        setLoading(false);
+        return;
+      }
+
+      // ensure memberId is present; default to current user when available
+      if (!formData.memberId) {
+        if (user) {
+          formData.memberId = user.memberId || user.id;
+        } else {
+          setError('Member must be selected or you must be logged in');
+          setLoading(false);
+          return;
+        }
+      }
+
       const payload = {
         ...formData,
         duration: parseInt(formData.duration, 10) || 0,
@@ -130,6 +201,23 @@ const WorkoutForm = () => {
       {error && <div className="error-message">{error}</div>}
 
       <form onSubmit={handleSubmit}>
+        {isAdmin() && (
+          <div className="form-group">
+            <label htmlFor="memberId">Member</label>
+            <select
+              id="memberId"
+              name="memberId"
+              value={formData.memberId}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Select member</option>
+              {members.map((m) => (
+                <option key={m.id} value={m.id}>{m.firstName || m.name || m.email}</option>
+              ))}
+            </select>
+          </div>
+        )}
         <div className="form-row">
           <div className="form-group">
             <label htmlFor="type">Workout Type</label>
@@ -223,6 +311,9 @@ const WorkoutForm = () => {
               >
                 Remove
               </button>
+              {validationErrors[index] && (
+                <div className="field-error">{validationErrors[index]}</div>
+              )}
             </div>
           ))}
           <button
