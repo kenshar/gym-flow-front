@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../auth/AuthContext';
-import { getAttendanceHistory, getTodayAttendance } from '../../api/attendance.api';
+import { getMyAttendance, getTodayAttendance } from '../../api/attendance.api';
 import { getWorkouts } from '../../api/workouts.api';
 import { formatDate } from '../../shared/utils/formatDate';
 
@@ -17,7 +17,7 @@ const UserDashboard = () => {
       try {
         const [todayData, attendanceData, workoutsData] = await Promise.all([
           getTodayAttendance(),
-          getAttendanceHistory({ limit: 5 }),
+          getMyAttendance({ limit: 5 }),
           getWorkouts({ limit: 5 }),
         ]);
 

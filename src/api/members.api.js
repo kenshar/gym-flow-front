@@ -2,7 +2,7 @@ import api from './axios';
 
 export const getMembers = async (params = {}) => {
   const response = await api.get('/members', { params });
-  return response.data;
+  return response.data.members || [];
 };
 
 export const getMember = async (id) => {

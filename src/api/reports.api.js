@@ -12,13 +12,6 @@ export const getMembersActivity = (params = {}) => {
   return api.get('/admin/reports/members-activity', { params }).then(r => r.data);
 };
 
-export default {
-  getAttendanceFrequency,
-  getWorkoutsSummary,
-  getMembersActivity,
-};
-import api from './axios';
-
 export const getSummaryReport = async (params = {}) => {
   const response = await api.get('/reports/summary', { params });
   return response.data;
@@ -45,4 +38,15 @@ export const exportReport = async (type, format = 'csv') => {
     responseType: 'blob',
   });
   return response.data;
+};
+
+export default {
+  getAttendanceFrequency,
+  getWorkoutsSummary,
+  getMembersActivity,
+  getSummaryReport,
+  getAttendanceReport,
+  getMembershipReport,
+  getRevenueReport,
+  exportReport,
 };
