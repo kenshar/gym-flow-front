@@ -18,12 +18,12 @@
 }
 
 .stat-card {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
   color: white;
   padding: 25px;
   border-radius: 12px;
   text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(255, 107, 53, 0.2);
 }
 
 .stat-value {
@@ -64,12 +64,14 @@
   background: white;
   border-radius: 12px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .history-list table {
   width: 100%;
   border-collapse: collapse;
+  min-width: 500px;
 }
 
 .history-list thead {
@@ -82,6 +84,7 @@
   font-weight: 600;
   color: #555;
   border-bottom: 2px solid #e0e0e0;
+  white-space: nowrap;
 }
 
 .history-list td {
@@ -129,14 +132,14 @@
     font-size: 0.8rem;
   }
 
-  .history-list table {
-    min-width: 300px;
-  }
-
   .history-list th,
   .history-list td {
-    padding: 10px;
-    font-size: 0.75rem;
+    padding: 8px;
+    font-size: 0.7rem;
+  }
+
+  .history-list table {
+    min-width: 280px;
   }
 
   .empty-state {
