@@ -61,7 +61,7 @@ const LandingPage = () => {
           <h1>Transform Your Body, Transform Your Life</h1>
           <p>Join GymFlow today and start your fitness journey with state-of-the-art equipment, expert trainers, and a supportive community.</p>
           <div className="hero-buttons">
-            <Link to="/signup" className="btn btn-primary btn-lg">Get Started</Link>
+            <Link to="/login" className="btn btn-primary btn-lg">Get Started</Link>
             <a href="#plans" className="btn btn-outline btn-lg">View Plans</a>
           </div>
         </div>

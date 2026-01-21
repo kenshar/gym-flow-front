@@ -3,7 +3,6 @@ import { useAuth } from '../auth/AuthContext';
 
 import LandingPage from '../pages/LandingPage';
 import Login from '../auth/Login';
-import SignUp from '../auth/SignUp';
 import ResetPassword from '../auth/ResetPassword';
 
 import AdminRoute from './AdminRoute';
@@ -38,16 +37,6 @@ const AppRoutes = () => {
             <Navigate to={isAdmin() ? '/admin/dashboard' : '/dashboard'} replace />
           ) : (
             <Login />
-          )
-        }
-      />
-      <Route
-        path="/signup"
-        element={
-          isAuthenticated() ? (
-            <Navigate to={isAdmin() ? '/admin/dashboard' : '/dashboard'} replace />
-          ) : (
-            <SignUp />
           )
         }
       />
