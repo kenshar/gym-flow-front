@@ -1,388 +1,514 @@
 /* App Layout */
 .app {
-  @apply min-h-screen flex flex-col bg-dark-50;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .main-content {
-  @apply flex-1 py-8 px-6 max-w-7xl mx-auto w-full;
+  flex: 1;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .main-full {
-  @apply flex-1 flex items-center justify-center;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Navbar */
 .navbar {
-  @apply flex items-center justify-between px-6 h-16 bg-white border-b-2 border-dark-200;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  height: 64px;
+  background-color: var(--primary-color);
+  color: white;
 }
 
 .navbar-brand a {
-  @apply text-xl font-bold text-dark-900 no-underline uppercase tracking-widest;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 .navbar-nav {
-  @apply flex list-none gap-1;
+  display: flex;
+  list-style: none;
+  gap: 0.25rem;
 }
 
 .navbar-nav li a {
-  @apply block px-4 py-2 text-dark-600 no-underline text-sm font-medium uppercase tracking-wide transition-all duration-200;
+  display: block;
+  padding: 0.5rem 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.2s ease;
 }
 
 .navbar-nav li a:hover {
-  @apply bg-dark-100 text-dark-900;
+  color: white;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .navbar-nav li.active a {
-  @apply bg-dark-900 text-white;
+  color: white;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .navbar-user {
-  @apply flex items-center gap-4;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .user-name {
-  @apply font-medium text-dark-900;
+  font-weight: 500;
+  color: white;
 }
 
 .user-role {
-  @apply text-xs text-dark-600 bg-dark-100 px-3 py-1 uppercase tracking-wider font-medium;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0.25rem 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.navbar-user .btn {
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+}
+
+.navbar-user .btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 /* Login Page */
 .login-container {
-  @apply flex items-center justify-center min-h-screen p-6 bg-dark-100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  background-color: var(--background);
 }
 
 .login-card {
-  @apply w-full max-w-md p-8 bg-white border-2 border-dark-200;
+  width: 100%;
+  max-width: 420px;
+  padding: 3rem;
+  background-color: white;
+  box-shadow: var(--shadow-lg);
 }
 
 .login-card h1 {
-  @apply text-center text-dark-900 mb-2 text-3xl font-bold uppercase tracking-widest;
+  text-align: center;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 .login-card h2 {
-  @apply text-center font-medium text-dark-500 mb-8 text-sm uppercase tracking-wider;
+  text-align: center;
+  font-weight: 400;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 .login-card .btn {
-  @apply w-full mt-4;
+  width: 100%;
+  margin-top: 1rem;
 }
 
 .login-footer {
-  @apply text-center mt-6 pt-6 border-t-2 border-dark-200;
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 2px solid var(--border-color);
 }
 
 .login-footer a {
-  @apply text-sm text-dark-600 hover:text-dark-900;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
 }
 
 /* Dashboard */
 .dashboard h1 {
-  @apply text-2xl font-bold mb-8 uppercase tracking-wide;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .stats-grid {
-  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .stat-card {
-  @apply bg-white p-6 border-2 border-dark-200;
+  background-color: white;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
 }
 
 .stat-card h3 {
-  @apply text-xs font-semibold text-dark-500 mb-2 uppercase tracking-wider;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 .stat-value {
-  @apply text-3xl font-bold text-dark-900;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
 }
 
 .dashboard-sections {
-  @apply grid gap-6;
+  display: grid;
+  gap: 1.5rem;
 }
 
 .dashboard-section {
-  @apply bg-white p-6 border-2 border-dark-200;
+  background-color: white;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
 }
 
 .section-header {
-  @apply flex justify-between items-center mb-6 pb-4 border-b-2 border-dark-100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--border-color);
 }
 
 .section-header h2 {
-  @apply text-sm font-bold uppercase tracking-wider text-dark-900 m-0;
+  margin-bottom: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.875rem;
 }
 
 .quick-actions {
-  @apply flex gap-3 flex-wrap;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Page Header */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.page-header h1 {
+  margin-bottom: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 /* Filters */
 .filters {
-  @apply flex gap-4 mb-6;
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .search-input {
-  @apply flex-1 max-w-xs px-4 py-3 border-2 border-dark-200 text-sm focus:outline-none focus:border-dark-900;
+  flex: 1;
+  max-width: 300px;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--border-color);
+  font-size: 0.875rem;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
 }
 
 .filter-select {
-  @apply px-4 py-3 border-2 border-dark-200 bg-white text-sm focus:outline-none focus:border-dark-900;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--border-color);
+  background-color: white;
+  font-size: 0.875rem;
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: var(--primary-color);
 }
 
 /* Details Page */
 .details-grid {
-  @apply grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .details-card {
-  @apply bg-white p-6 border-2 border-dark-200;
+  background-color: white;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
 }
 
 .details-card h2 {
-  @apply pb-3 border-b-2 border-dark-100 mb-4 text-sm font-bold uppercase tracking-wider;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--border-color);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.875rem;
 }
 
 .details-card dl {
-  @apply grid grid-cols-[auto_1fr] gap-x-4 gap-y-2;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.5rem 1rem;
 }
 
 .details-card dt {
-  @apply font-medium text-dark-500 text-sm;
+  font-weight: 500;
+  color: var(--text-secondary);
 }
 
 .details-card dd {
-  @apply text-dark-900;
-}
-
-.back-link {
-  @apply mt-4;
-}
-
-/* Check-in Page */
-.check-in-page {
-  @apply max-w-lg mx-auto;
-}
-
-.check-in-card {
-  @apply bg-white p-8 border-2 border-dark-200 text-center;
-}
-
-.current-time {
-  @apply mb-8;
-}
-
-.current-time .time {
-  @apply text-5xl font-bold text-dark-900;
-}
-
-.current-time .date {
-  @apply text-dark-500 text-sm uppercase tracking-wider mt-2;
-}
-
-.status-display {
-  @apply mb-8;
-}
-
-.status-indicator {
-  @apply w-20 h-20 mx-auto mb-4;
-}
-
-.status-indicator.active {
-  @apply bg-green-500;
-  animation: pulse 2s infinite;
-}
-
-.status-indicator.completed {
-  @apply bg-primary-600;
-}
-
-.status-indicator.inactive {
-  @apply bg-dark-200;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.6; }
-}
-
-.status-text {
-  @apply text-lg font-semibold mb-1;
-}
-
-.status-detail {
-  @apply text-dark-500 text-sm;
-}
-
-.check-in-actions .btn-large {
-  @apply min-w-[200px];
-}
-
-.completed-message {
-  @apply text-dark-500 italic;
+  color: var(--text-primary);
 }
 
 /* Activity List */
 .activity-list {
-  @apply list-none;
+  list-style: none;
 }
 
 .activity-list li {
-  @apply flex justify-between items-center py-4 border-b-2 border-dark-100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .activity-list li:last-child {
-  @apply border-b-0;
+  border-bottom: none;
 }
 
 /* Workout History */
 .workout-list {
-  @apply grid gap-4;
+  display: grid;
+  gap: 1rem;
 }
 
 .workout-card {
-  @apply bg-white p-6 border-2 border-dark-200;
+  background-color: white;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
 }
 
 .workout-header {
-  @apply flex justify-between items-center mb-4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
 }
 
 .workout-header h3 {
-  @apply m-0 text-lg font-bold;
+  margin: 0;
+  font-size: 1.125rem;
 }
 
 .workout-date {
-  @apply text-dark-500 text-sm;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
 }
 
 .workout-details {
-  @apply flex gap-8 mb-4;
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1rem;
 }
 
 .workout-details .detail {
-  @apply flex flex-col;
+  display: flex;
+  flex-direction: column;
 }
 
 .workout-details .label {
-  @apply text-xs text-dark-500 uppercase tracking-wider;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .workout-details .value {
-  @apply font-semibold text-dark-900;
+  font-weight: 600;
 }
 
 .exercises-summary {
-  @apply mb-4;
+  margin-bottom: 1rem;
 }
 
 .exercises-summary h4 {
-  @apply text-xs font-semibold uppercase tracking-wider mb-2;
+  font-size: 0.75rem;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .exercises-summary ul {
-  @apply list-none text-sm text-dark-600;
+  list-style: none;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
 }
 
 .workout-notes {
-  @apply p-4 bg-dark-50 mb-4 text-sm border-l-4 border-dark-300;
+  padding: 1rem;
+  background-color: var(--background);
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  border-left: 4px solid var(--border-color);
 }
 
 .workout-actions {
-  @apply flex gap-2 pt-4 border-t-2 border-dark-100;
+  display: flex;
+  gap: 0.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
 }
 
-/* Workout Form / Member Form */
+/* Forms */
 .workout-form,
 .member-form {
-  @apply max-w-2xl;
+  max-width: 600px;
 }
 
 .exercise-row {
-  @apply grid grid-cols-[2fr_1fr_1fr_1fr_auto] gap-2 mb-2 items-center;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr auto;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  align-items: center;
 }
 
 .exercise-row input {
-  @apply px-3 py-2 border-2 border-dark-200 text-sm focus:outline-none focus:border-dark-900;
+  padding: 0.5rem;
+  border: 2px solid var(--border-color);
+}
+
+.exercise-row input:focus {
+  outline: none;
+  border-color: var(--primary-color);
 }
 
 .field-error {
-  @apply col-span-full text-red-600 text-xs mt-1;
+  grid-column: 1 / -1;
+  color: var(--danger-color);
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
 }
 
 /* Reports */
-.report-filters {
-  @apply flex gap-4 mb-6;
-}
-
 .report-section {
-  @apply bg-white p-6 border-2 border-dark-200 mb-6;
+  background-color: white;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  margin-bottom: 1.5rem;
 }
 
 .membership-stats {
-  @apply grid grid-cols-2 lg:grid-cols-4 gap-4;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
 }
 
 .stat-item {
-  @apply text-center p-4 bg-dark-50;
+  text-align: center;
+  padding: 1rem;
+  background-color: var(--background);
 }
 
 .stat-item .label {
-  @apply block text-xs text-dark-500 uppercase tracking-wider mb-1;
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .stat-item .value {
-  @apply text-2xl font-bold text-dark-900;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
 }
 
-/* User Dashboard specific */
+/* User Dashboard */
 .user-dashboard .checkin-section {
-  @apply text-center;
+  text-align: center;
 }
 
 .checkin-status {
-  @apply py-6 mb-6;
-}
-
-.checkin-status .status-active p,
-.checkin-status .status-completed p,
-.checkin-status .status-inactive p {
-  @apply text-dark-900;
-}
-
-.checkin-status .checkin-time,
-.checkin-status .session-time {
-  @apply text-dark-500 text-sm mt-1;
+  padding: 2rem 0;
+  margin-bottom: 1.5rem;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
   .navbar {
-    @apply px-4;
+    padding: 0 1rem;
   }
 
   .navbar-nav {
-    @apply hidden;
+    display: none;
   }
 
   .main-content {
-    @apply px-4;
+    padding: 1rem;
   }
 
   .stats-grid {
-    @apply grid-cols-2;
+    grid-template-columns: 1fr 1fr;
   }
 
   .filters {
-    @apply flex-col;
+    flex-direction: column;
   }
 
   .search-input {
-    @apply max-w-none;
+    max-width: none;
   }
 
   .exercise-row {
-    @apply grid-cols-1;
+    grid-template-columns: 1fr;
   }
 }
