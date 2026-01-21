@@ -5,7 +5,7 @@ const LandingPage = () => {
   const plans = [
     {
       name: 'Basic',
-      price: 29.99,
+      price: '2,500',
       period: 'month',
       features: [
         'Access to gym equipment',
@@ -17,7 +17,7 @@ const LandingPage = () => {
     },
     {
       name: 'Premium',
-      price: 49.99,
+      price: '4,500',
       period: 'month',
       features: [
         'All Basic features',
@@ -30,7 +30,7 @@ const LandingPage = () => {
     },
     {
       name: 'VIP',
-      price: 99.99,
+      price: '8,000',
       period: 'month',
       features: [
         'All Premium features',
@@ -104,7 +104,7 @@ const LandingPage = () => {
               {plan.popular && <div className="popular-badge">Most Popular</div>}
               <h3>{plan.name}</h3>
               <div className="plan-price">
-                <span className="currency">$</span>
+                <span className="currency">KES </span>
                 <span className="amount">{plan.price}</span>
                 <span className="period">/{plan.period}</span>
               </div>
