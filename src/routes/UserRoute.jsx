@@ -3,12 +3,13 @@ import { useAuth } from '../auth/AuthContext';
 
 const UserRoute = () => {
   const { isAuthenticated, loading } = useAuth();
+  const hasToken = !!localStorage.getItem('token');
 
   if (loading) {
     return <div className="loading">Loading...</div>;
   }
 
-  if (!isAuthenticated()) {
+  if (!isAuthenticated() && !hasToken) {
     return <Navigate to="/login" replace />;
   }
 
