@@ -7,17 +7,17 @@ export const checkIn = async (memberId) => {
   return response.data;
 };
 
-export const getAttendanceHistory = async (memberId) => {
-  const response = await api.get(`/attendance/history/${memberId}`);
-  return response.data;
+export const getAttendanceHistory = async (memberId, params = {}) => {
+  const response = await api.get(`/attendance/history/${memberId}`, { params });
+  return response.data.history || [];
 };
 
 export const getTodayAttendance = async () => {
   const response = await api.get('/attendance/today');
-  return response.data;
+  return response.data.attendances || [];
 };
 
-export const getMyAttendance = async () => {
-  const response = await api.get('/attendance/my-history');
-  return response.data;
+export const getMyAttendance = async (params = {}) => {
+  const response = await api.get('/attendance/my-history', { params });
+  return response.data.history || [];
 };

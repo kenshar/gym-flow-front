@@ -11,6 +11,7 @@ import AdminDashboard from '../admin/dashboard/AdminDashboard';
 import MembersList from '../admin/members/MembersList';
 import MemberForm from '../admin/members/MemberForm';
 import MemberDetails from '../admin/members/MemberDetails';
+import AttendanceList from '../admin/attendance/AttendanceList';
 import SummaryReport from '../admin/reports/SummaryReport';
 
 import UserDashboard from '../user/dashboard/UserDashboard';
@@ -48,6 +49,7 @@ const AppRoutes = () => {
         <Route path="members/new" element={<MemberForm />} />
         <Route path="members/:id" element={<MemberDetails />} />
         <Route path="members/:id/edit" element={<MemberForm />} />
+        <Route path="attendance" element={<AttendanceList />} />
         <Route path="reports" element={<SummaryReport />} />
       </Route>
 
