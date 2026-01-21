@@ -1,4 +1,5 @@
 import React from 'react';
+import { FiCheck } from 'react-icons/fi';
 
 const services = [
   {
@@ -80,7 +81,7 @@ const Services = () => {
               <ul className="space-y-4">
                 {plan.features.map((feature, idx) => (
                   <li key={idx} className="flex items-center gap-3 font-body text-muted-foreground">
-                    <span className="w-5 h-5">✔️</span>
+                    <FiCheck className="w-5 h-5 text-primary flex-shrink-0" />
                     {feature}
                   </li>
                 ))}

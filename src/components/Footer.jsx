@@ -1,4 +1,5 @@
 import React from 'react';
+import { FiPhone, FiMail, FiMapPin, FiInstagram, FiFacebook } from 'react-icons/fi';
 
 const Footer = () => {
   const scrollToSection = (id) => {
@@ -56,15 +57,15 @@ const Footer = () => {
             <h4 className="font-display text-xl mb-4">Contact Us</h4>
             <ul className="space-y-3">
               <li className="flex items-center gap-3 font-body text-muted-foreground">
-                <span className="w-5 h-5">📞</span>
+                <FiPhone className="w-5 h-5 text-primary" />
                 +254 (712) 345-678
               </li>
               <li className="flex items-center gap-3 font-body text-muted-foreground">
-                <span className="w-5 h-5">✉️</span>
+                <FiMail className="w-5 h-5 text-primary" />
                 gymflow@gmail.com
               </li>
               <li className="flex items-center gap-3 font-body text-muted-foreground">
-                <span className="w-5 h-5">📍</span>
+                <FiMapPin className="w-5 h-5 text-primary" />
                 123 Mwananchi ST, NBO 00100
               </li>
             </ul>
@@ -78,13 +79,13 @@ const Footer = () => {
                 href="#"
                 className="w-10 h-10 bg-secondary rounded-lg flex items-center justify-center hover:bg-primary transition-colors duration-300 group"
               >
-                <span className="text-muted-foreground group-hover:text-primary-foreground">📸</span>
+                <FiInstagram className="w-5 h-5 text-muted-foreground group-hover:text-primary-foreground" />
               </a>
               <a
                 href="#"
                 className="w-10 h-10 bg-secondary rounded-lg flex items-center justify-center hover:bg-primary transition-colors duration-300 group"
               >
-                <span className="text-muted-foreground group-hover:text-primary-foreground">📘</span>
+                <FiFacebook className="w-5 h-5 text-muted-foreground group-hover:text-primary-foreground" />
               </a>
               <a
                 href="#"

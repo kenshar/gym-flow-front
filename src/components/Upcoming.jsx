@@ -1,4 +1,5 @@
 import React from 'react';
+import { FiCalendar, FiMapPin, FiUsers } from 'react-icons/fi';
 
 const events = [
   {
@@ -60,15 +61,15 @@ const Upcoming = () => {
 
                 <div className="space-y-3">
                   <div className="flex items-center gap-3 text-muted-foreground font-body">
-                    <span className="w-5 h-5">📅</span>
+                    <FiCalendar className="w-5 h-5 text-primary" />
                     <span>{event.date} • {event.time}</span>
                   </div>
                   <div className="flex items-center gap-3 text-muted-foreground font-body">
-                    <span className="w-5 h-5">📍</span>
+                    <FiMapPin className="w-5 h-5 text-primary" />
                     <span>{event.location}</span>
                   </div>
                   <div className="flex items-center gap-3 text-muted-foreground font-body">
-                    <span className="w-5 h-5">👥</span>
+                    <FiUsers className="w-5 h-5 text-primary" />
                     <span>{event.spots} spots left</span>
                   </div>
                 </div>
