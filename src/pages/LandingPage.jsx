@@ -72,22 +72,18 @@ const LandingPage = () => {
         <h2>Why Choose GymFlow?</h2>
         <div className="features-grid">
           <div className="feature-card">
-            <div className="feature-icon">💪</div>
             <h3>Modern Equipment</h3>
             <p>State-of-the-art fitness equipment for all your workout needs</p>
           </div>
           <div className="feature-card">
-            <div className="feature-icon">👨‍🏫</div>
             <h3>Expert Trainers</h3>
             <p>Certified personal trainers to guide your fitness journey</p>
           </div>
           <div className="feature-card">
-            <div className="feature-icon">📊</div>
             <h3>Track Progress</h3>
             <p>Digital tools to monitor your workouts and achievements</p>
           </div>
           <div className="feature-card">
-            <div className="feature-icon">🏋️</div>
             <h3>Group Classes</h3>
             <p>Fun and engaging group fitness classes for all levels</p>
           </div>
@@ -110,7 +106,7 @@ const LandingPage = () => {
               </div>
               <ul className="plan-features">
                 {plan.features.map((feature, index) => (
-                  <li key={index}>✓ {feature}</li>
+                  <li key={index}>{feature}</li>
                 ))}
               </ul>
               <Link to="/login" className={`btn ${plan.popular ? 'btn-primary' : 'btn-outline'} btn-block`}>

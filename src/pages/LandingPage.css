@@ -17,6 +17,7 @@
   background: rgba(10, 10, 10, 0.95);
   backdrop-filter: blur(10px);
   z-index: 1000;
+  border-bottom: 1px solid #1a1a1a;
 }
 
 .logo {
@@ -51,7 +52,7 @@
   align-items: center;
   text-align: center;
   padding: 6rem 5% 4rem;
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%);
+  background: #0a0a0a;
 }
 
 .hero-content {
@@ -60,16 +61,14 @@
 
 .hero h1 {
   font-size: 3.5rem;
-  font-weight: 800;
+  font-weight: 700;
   margin-bottom: 1.5rem;
-  background: linear-gradient(135deg, #fff 0%, #6366f1 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #fff;
+  letter-spacing: -0.02em;
 }
 
 .hero p {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   color: #9ca3af;
   margin-bottom: 2rem;
   line-height: 1.8;
@@ -84,10 +83,9 @@
 /* Buttons */
 .btn {
   padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  font-weight: 600;
+  font-weight: 500;
   text-decoration: none;
-  transition: all 0.3s;
+  transition: all 0.2s;
   cursor: pointer;
   border: none;
   display: inline-block;
@@ -100,23 +98,22 @@
 
 .btn-primary:hover {
   background: #4f46e5;
-  transform: translateY(-2px);
 }
 
 .btn-outline {
   background: transparent;
-  border: 2px solid #6366f1;
-  color: #6366f1;
+  border: 1px solid #333;
+  color: #fff;
 }
 
 .btn-outline:hover {
-  background: #6366f1;
-  color: #fff;
+  background: #1a1a1a;
+  border-color: #444;
 }
 
 .btn-lg {
   padding: 1rem 2rem;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 .btn-block {
@@ -129,11 +126,14 @@
 .features-section {
   padding: 6rem 5%;
   background: #111;
+  border-top: 1px solid #1a1a1a;
+  border-bottom: 1px solid #1a1a1a;
 }
 
 .features-section h2 {
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 2rem;
+  font-weight: 600;
   margin-bottom: 3rem;
 }
 
@@ -146,31 +146,25 @@
 }
 
 .feature-card {
-  background: #1a1a1a;
+  background: #0a0a0a;
   padding: 2rem;
-  border-radius: 16px;
-  text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s;
+  border: 1px solid #1a1a1a;
 }
 
 .feature-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 40px rgba(99, 102, 241, 0.2);
-}
-
-.feature-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+  border-color: #333;
 }
 
 .feature-card h3 {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
+  font-weight: 600;
   margin-bottom: 0.75rem;
 }
 
 .feature-card p {
   color: #9ca3af;
   line-height: 1.6;
+  font-size: 0.95rem;
 }
 
 /* Plans Section */
@@ -181,7 +175,8 @@
 
 .plans-section h2 {
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 2rem;
+  font-weight: 600;
   margin-bottom: 0.5rem;
 }
 
@@ -194,65 +189,62 @@
 .plans-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  max-width: 1100px;
+  gap: 1.5rem;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
 .plan-card {
-  background: #1a1a1a;
+  background: #111;
   padding: 2.5rem;
-  border-radius: 20px;
   position: relative;
-  border: 2px solid transparent;
-  transition: all 0.3s;
+  border: 1px solid #1a1a1a;
 }
 
 .plan-card:hover {
-  border-color: #6366f1;
+  border-color: #333;
 }
 
 .plan-card.popular {
   border-color: #6366f1;
-  transform: scale(1.05);
 }
 
 .popular-badge {
   position: absolute;
-  top: -12px;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 0;
+  right: 2rem;
   background: #6366f1;
   color: #fff;
-  padding: 0.5rem 1.5rem;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  font-weight: 600;
+  padding: 0.4rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 500;
 }
 
 .plan-card h3 {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
   margin-bottom: 1rem;
-  text-align: center;
 }
 
 .plan-price {
-  text-align: center;
   margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #1a1a1a;
 }
 
 .plan-price .currency {
-  font-size: 1.5rem;
-  vertical-align: top;
+  font-size: 1rem;
+  color: #9ca3af;
 }
 
 .plan-price .amount {
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   font-weight: 700;
 }
 
 .plan-price .period {
   color: #9ca3af;
+  font-size: 0.9rem;
 }
 
 .plan-features {
@@ -262,13 +254,18 @@
 }
 
 .plan-features li {
-  padding: 0.75rem 0;
+  padding: 0.6rem 0;
   color: #d1d5db;
-  border-bottom: 1px solid #2a2a2a;
+  font-size: 0.95rem;
+  padding-left: 1.5rem;
+  position: relative;
 }
 
-.plan-features li:last-child {
-  border-bottom: none;
+.plan-features li::before {
+  content: "-";
+  position: absolute;
+  left: 0;
+  color: #6366f1;
 }
 
 /* About Section */
@@ -276,10 +273,12 @@
   padding: 6rem 5%;
   background: #111;
   text-align: center;
+  border-top: 1px solid #1a1a1a;
 }
 
 .about-section h2 {
-  font-size: 2.5rem;
+  font-size: 2rem;
+  font-weight: 600;
   margin-bottom: 1.5rem;
 }
 
@@ -288,7 +287,7 @@
   margin: 0 auto 3rem;
   color: #9ca3af;
   line-height: 1.8;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 .stats-grid {
@@ -305,7 +304,7 @@
 
 .stat-number {
   display: block;
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 700;
   color: #6366f1;
   margin-bottom: 0.5rem;
@@ -313,6 +312,7 @@
 
 .stat-label {
   color: #9ca3af;
+  font-size: 0.9rem;
 }
 
 /* Footer */
@@ -340,6 +340,7 @@
 
 .footer-brand p {
   color: #9ca3af;
+  font-size: 0.9rem;
 }
 
 .footer-links {
@@ -350,7 +351,7 @@
 .footer-links a {
   color: #9ca3af;
   text-decoration: none;
-  transition: color 0.3s;
+  font-size: 0.9rem;
 }
 
 .footer-links a:hover {
@@ -362,6 +363,7 @@
   padding-top: 1.5rem;
   border-top: 1px solid #1a1a1a;
   color: #6b7280;
+  font-size: 0.85rem;
 }
 
 /* Responsive */
@@ -371,15 +373,11 @@
   }
 
   .hero h1 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
   }
 
   .hero-buttons {
     flex-direction: column;
-  }
-
-  .plan-card.popular {
-    transform: none;
   }
 
   .footer-content {
