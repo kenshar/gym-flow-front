@@ -1,5 +1,24 @@
 import api from './axios';
 
+export const getAttendanceFrequency = (params = {}) => {
+  return api.get('/admin/reports/attendance-frequency', { params }).then(r => r.data);
+};
+
+export const getWorkoutsSummary = (params = {}) => {
+  return api.get('/admin/reports/workouts-summary', { params }).then(r => r.data);
+};
+
+export const getMembersActivity = (params = {}) => {
+  return api.get('/admin/reports/members-activity', { params }).then(r => r.data);
+};
+
+export default {
+  getAttendanceFrequency,
+  getWorkoutsSummary,
+  getMembersActivity,
+};
+import api from './axios';
+
 export const getSummaryReport = async (params = {}) => {
   const response = await api.get('/reports/summary', { params });
   return response.data;
