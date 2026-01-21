@@ -19,15 +19,14 @@ export default function AttendanceHistory({ memberId }) {
     const fetchHistory = async () => {
       try {
         setLoading(true);
-        let response;
+        let records;
         
         if (memberId) {
-          response = await getAttendanceHistory(memberId);
+          records = await getAttendanceHistory(memberId);
         } else {
-          response = await getMyAttendance();
+          records = await getMyAttendance();
         }
 
-        const records = response.data?.history || response.history || [];
         setHistory(records);
         calculateStats(records);
       } catch (err) {

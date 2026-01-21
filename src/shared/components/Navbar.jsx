@@ -10,6 +10,7 @@ const Navbar = () => {
   const adminLinks = [
     { path: '/admin/dashboard', label: 'Dashboard' },
     { path: '/admin/members', label: 'Members' },
+    { path: '/admin/attendance', label: 'Attendance' },
     { path: '/admin/reports', label: 'Reports' },
   ];
 

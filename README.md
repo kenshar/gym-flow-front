@@ -11,7 +11,7 @@ This is the frontend for the Gym Flow application, built with React and Vite. It
 
 ### Feature Breakdown by Contributor
 
-#### Authentication & Authorization - Ken
+#### Authentication & Authorisation - Ken
 - Secure user login and session management
 - Role-based access control (Admin vs User routes)
 - Protected route components
@@ -37,7 +37,7 @@ This is the frontend for the Gym Flow application, built with React and Vite. It
 
 #### Admin Dashboard & Reports - Linda
 - Comprehensive admin dashboard
-- Data visualization with Chart.js
+- Data visualisation with Chart.js
 - Summary reports
 - Performance metrics and analytics
 
@@ -105,4 +105,3 @@ src/
 ---
 ## License
 © 2026 Gym Flow. This project is licensed under the MIT License - see the LICENSE file for details.
-
