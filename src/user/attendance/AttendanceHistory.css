@@ -6,11 +6,13 @@
 
 .attendance-history h3 {
   margin-bottom: 30px;
-  color: #333;
-  font-size: 1.8rem;
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-.stats-grid {
+.attendance-history .stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
@@ -21,33 +23,37 @@
   background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
   color: white;
   padding: 25px;
-  border-radius: 12px;
   text-align: center;
   box-shadow: 0 4px 6px rgba(255, 107, 53, 0.2);
 }
 
-.stat-value {
+.attendance-history .stat-value {
   font-size: 2.5rem;
   font-weight: bold;
   margin-bottom: 8px;
+  color: white;
 }
 
-.stat-label {
-  font-size: 0.9rem;
+.attendance-history .stat-label {
+  font-size: 0.75rem;
   opacity: 0.9;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
-.loading {
+.attendance-history .loading {
   text-align: center;
   padding: 40px;
-  color: #666;
-  font-size: 1.1rem;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 .empty-state {
   text-align: center;
   padding: 60px 20px;
-  color: #666;
+  color: var(--text-secondary);
 }
 
 .empty-state p {
@@ -56,7 +62,7 @@
 }
 
 .empty-state .hint {
-  color: #999;
+  color: var(--text-secondary);
   font-size: 0.95rem;
 }
 
@@ -75,7 +81,7 @@
 }
 
 .history-list thead {
-  background: #f8f9fa;
+  background: var(--background);
 }
 
 .history-list th {
@@ -89,12 +95,12 @@
 
 .history-list td {
   padding: 15px;
-  border-bottom: 1px solid #f0f0f0;
-  color: #666;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-primary);
 }
 
 .history-list tbody tr:hover {
-  background: #f8f9fa;
+  background: var(--background);
 }
 
 .history-list tbody tr:last-child td {
