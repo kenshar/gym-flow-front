@@ -23,6 +23,7 @@ const WorkoutForm = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [members, setMembers] = useState([]);
+  const [validationErrors, setValidationErrors] = useState({});
 
   useEffect(() => {
     fetchWorkoutTypes();
@@ -95,14 +96,27 @@ const WorkoutForm = () => {
   };
 
   const validateExercises = (exercises) => {
+    const errors = {};
     for (let i = 0; i < exercises.length; i++) {
       const ex = exercises[i];
-      if (!ex.name || ex.name.trim() === '') return `Exercise #${i + 1} is missing a name`;
-      if (ex.sets !== '' && (!Number.isInteger(Number(ex.sets)) || Number(ex.sets) < 1)) return `Exercise #${i + 1} sets must be an integer >= 1`;
-      if (ex.reps !== '' && (!Number.isInteger(Number(ex.reps)) || Number(ex.reps) < 1)) return `Exercise #${i + 1} reps must be an integer >= 1`;
-      if (ex.weight !== '' && (isNaN(Number(ex.weight)) || Number(ex.weight) < 0)) return `Exercise #${i + 1} weight must be a number >= 0`;
+      if (!ex.name || ex.name.trim() === '') {
+        errors[i] = `Exercise #${i + 1} is missing a name`;
+        continue;
+      }
+      if (ex.sets !== '' && (!Number.isInteger(Number(ex.sets)) || Number(ex.sets) < 1)) {
+        errors[i] = `Sets must be an integer >= 1`;
+        continue;
+      }
+      if (ex.reps !== '' && (!Number.isInteger(Number(ex.reps)) || Number(ex.reps) < 1)) {
+        errors[i] = `Reps must be an integer >= 1`;
+        continue;
+      }
+      if (ex.weight !== '' && (isNaN(Number(ex.weight)) || Number(ex.weight) < 0)) {
+        errors[i] = `Weight must be a number >= 0`;
+        continue;
+      }
     }
-    return null;
+    return errors;
   };
 
   const addExercise = () => {
@@ -138,9 +152,10 @@ const WorkoutForm = () => {
 
     try {
       // client-side validation for exercises
-      const exerciseError = validateExercises(formData.exercises || []);
-      if (exerciseError) {
-        setError(exerciseError);
+      const exerciseErrors = validateExercises(formData.exercises || []);
+      setValidationErrors(exerciseErrors);
+      if (Object.keys(exerciseErrors).length > 0) {
+        setError('Please fix exercise errors');
         setLoading(false);
         return;
       }
@@ -186,6 +201,23 @@ const WorkoutForm = () => {
       {error && <div className="error-message">{error}</div>}
 
       <form onSubmit={handleSubmit}>
+        {isAdmin() && (
+          <div className="form-group">
+            <label htmlFor="memberId">Member</label>
+            <select
+              id="memberId"
+              name="memberId"
+              value={formData.memberId}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Select member</option>
+              {members.map((m) => (
+                <option key={m.id} value={m.id}>{m.firstName || m.name || m.email}</option>
+              ))}
+            </select>
+          </div>
+        )}
         <div className="form-row">
           <div className="form-group">
             <label htmlFor="type">Workout Type</label>
@@ -279,6 +311,9 @@ const WorkoutForm = () => {
               >
                 Remove
               </button>
+              {validationErrors[index] && (
+                <div className="field-error">{validationErrors[index]}</div>
+              )}
             </div>
           ))}
           <button
