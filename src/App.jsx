@@ -8,7 +8,7 @@ function App() {
   const { isAuthenticated } = useAuth();
   const location = useLocation();
 
-  const hideNavbar = ['/login', '/reset-password'].includes(location.pathname);
+  const hideNavbar = ['/', '/login', '/reset-password'].includes(location.pathname);
 
   return (
     <div className="app">

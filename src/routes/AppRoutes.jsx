@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useAuth } from '../auth/AuthContext';
 
+import LandingPage from '../pages/LandingPage';
 import Login from '../auth/Login';
 import ResetPassword from '../auth/ResetPassword';
 
@@ -62,14 +63,14 @@ const AppRoutes = () => {
         <Route path="/workouts/:id/edit" element={<WorkoutForm />} />
       </Route>
 
-      {/* Root redirect */}
+      {/* Landing page */}
       <Route
         path="/"
         element={
           isAuthenticated() ? (
             <Navigate to={isAdmin() ? '/admin/dashboard' : '/dashboard'} replace />
           ) : (
-            <Navigate to="/login" replace />
+            <LandingPage />
           )
         }
       />
