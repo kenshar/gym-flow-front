@@ -496,9 +496,221 @@
 }
 
 /* Responsive */
-@media (max-width: 768px) {
+/* Mobile phones (320px - 479px) */
+@media (max-width: 479px) {
+  .navbar {
+    padding: 0 0.75rem;
+    height: 56px;
+  }
+
+  .navbar-brand a {
+    font-size: 1.1rem;
+  }
+
+  .navbar-nav {
+    display: none;
+  }
+
+  .navbar-user {
+    gap: 0.5rem;
+  }
+
+  .user-name {
+    display: none;
+  }
+
+  .main-content {
+    padding: 0.75rem;
+    max-width: 100%;
+  }
+
+  .login-card {
+    max-width: 100%;
+    padding: 1.5rem 1rem;
+    border-radius: 0.75rem;
+  }
+
+  .login-card h1 {
+    font-size: 1.5rem;
+  }
+
+  .login-card h2 {
+    font-size: 0.95rem;
+  }
+
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .page-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .header-actions {
+    width: 100%;
+  }
+
+  .header-actions .btn {
+    flex: 1;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .stat-card {
+    padding: 1rem;
+  }
+
+  .stat-value {
+    font-size: 1.5rem;
+  }
+
+  .filters {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .search-input {
+    max-width: 100%;
+    padding: 0.5rem;
+  }
+
+  .filter-select {
+    width: 100%;
+    padding: 0.5rem;
+  }
+
+  .details-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .details-card {
+    padding: 1rem;
+  }
+
+  .details-card dl {
+    grid-template-columns: auto;
+  }
+
+  .check-in-card {
+    padding: 1.5rem 1rem;
+    border-radius: 0.75rem;
+  }
+
+  .current-time .time {
+    font-size: 2rem;
+  }
+
+  .status-indicator {
+    width: 60px;
+    height: 60px;
+  }
+
+  .check-in-actions .btn-large {
+    min-width: 100%;
+    padding: 0.75rem 1rem;
+  }
+
+  .workout-details {
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .exercise-row {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+
+  .exercise-row input {
+    padding: 0.375rem;
+  }
+
+  .quick-actions {
+    flex-direction: column;
+  }
+
+  .quick-actions .btn {
+    width: 100%;
+  }
+
+  .report-filters {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .membership-stats {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .stat-item {
+    padding: 0.75rem;
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .workout-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .form-actions .btn {
+    width: 100%;
+  }
+
+  .data-table {
+    font-size: 0.75rem;
+  }
+
+  .data-table th,
+  .data-table td {
+    padding: 0.5rem;
+  }
+
+  .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .btn-large {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Tablet devices (480px - 768px) */
+@media (min-width: 480px) and (max-width: 768px) {
   .navbar {
     padding: 0 1rem;
+    height: 60px;
   }
 
   .navbar-nav {
@@ -506,22 +718,117 @@
   }
 
   .main-content {
-    padding: 1rem;
+    padding: 1.25rem;
+    max-width: 100%;
+  }
+
+  .login-card {
+    max-width: 100%;
   }
 
   .stats-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .page-header h1 {
+    font-size: 1.75rem;
+  }
+
+  .header-actions {
+    width: 100%;
+  }
+
+  .header-actions .btn {
+    flex: 1;
   }
 
   .filters {
     flex-direction: column;
+    gap: 1rem;
   }
 
   .search-input {
-    max-width: none;
+    max-width: 100%;
+  }
+
+  .filter-select {
+    width: 100%;
+  }
+
+  .details-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .workout-details {
+    gap: 1.5rem;
+    flex-wrap: wrap;
   }
 
   .exercise-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .quick-actions {
+    flex-wrap: wrap;
+  }
+
+  .report-filters {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .membership-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .form-row {
     grid-template-columns: 1fr;
+  }
+
+  .form-actions {
+    flex-wrap: wrap;
+  }
+
+  .workout-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  h1 {
+    font-size: 1.65rem;
+  }
+}
+
+/* Tablets and larger (769px+) */
+@media (min-width: 769px) {
+  .navbar-nav {
+    display: flex;
+  }
+
+  .exercise-row {
+    grid-template-columns: 2fr 1fr 1fr 1fr auto;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .filters {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .quick-actions {
+    flex-wrap: nowrap;
   }
 }
