@@ -14,8 +14,8 @@ const SummaryReport = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [dateRange, setDateRange] = useState({
-    start: new Date(new Date().setDate(1)).toISOString().split('T')[0],
-    end: new Date().toISOString().split('T')[0],
+    startDate: new Date(new Date().setDate(1)).toISOString().split('T')[0],
+    endDate: new Date().toISOString().split('T')[0],
   });
 
   useEffect(() => {
@@ -71,9 +71,9 @@ const SummaryReport = () => {
           <label>Start Date</label>
           <input
             type="date"
-            value={dateRange.start}
+            value={dateRange.startDate}
             onChange={(e) =>
-              setDateRange((prev) => ({ ...prev, start: e.target.value }))
+              setDateRange((prev) => ({ ...prev, startDate: e.target.value }))
             }
           />
         </div>
@@ -81,9 +81,9 @@ const SummaryReport = () => {
           <label>End Date</label>
           <input
             type="date"
-            value={dateRange.end}
+            value={dateRange.endDate}
             onChange={(e) =>
-              setDateRange((prev) => ({ ...prev, end: e.target.value }))
+              setDateRange((prev) => ({ ...prev, endDate: e.target.value }))
             }
           />
         </div>
