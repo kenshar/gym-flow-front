@@ -1,0 +1,208 @@
+.attendance-history {
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.attendance-history h3 {
+  margin-bottom: 30px;
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.attendance-history .stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.stat-card {
+  background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+  color: white;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(255, 107, 53, 0.2);
+}
+
+.attendance-history .stat-value {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: white;
+}
+
+.attendance-history .stat-label {
+  font-size: 0.75rem;
+  opacity: 0.9;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.attendance-history .loading {
+  text-align: center;
+  padding: 40px;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-secondary);
+}
+
+.empty-state p {
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+.empty-state .hint {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.history-list {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.history-list table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 500px;
+}
+
+.history-list thead {
+  background: var(--background);
+}
+
+.history-list th {
+  padding: 15px;
+  text-align: left;
+  font-weight: 600;
+  color: #555;
+  border-bottom: 2px solid #e0e0e0;
+  white-space: nowrap;
+}
+
+.history-list td {
+  padding: 15px;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+.history-list tbody tr:hover {
+  background: var(--background);
+}
+
+.history-list tbody tr:last-child td {
+  border-bottom: none;
+}
+
+@media (max-width: 479px) {
+  .attendance-history {
+    padding: 10px;
+    max-width: 100%;
+  }
+
+  .attendance-history h3 {
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .stat-card {
+    padding: 15px;
+    border-radius: 8px;
+  }
+
+  .stat-value {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+  }
+
+  .history-list th,
+  .history-list td {
+    padding: 8px;
+    font-size: 0.7rem;
+  }
+
+  .history-list table {
+    min-width: 280px;
+  }
+
+  .empty-state {
+    padding: 30px 15px;
+  }
+
+  .empty-state p {
+    font-size: 0.95rem;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 768px) {
+  .attendance-history {
+    padding: 15px;
+  }
+
+  .attendance-history h3 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+
+  .stat-card {
+    padding: 20px;
+  }
+
+  .stat-value {
+    font-size: 2rem;
+  }
+
+  .stat-label {
+    font-size: 0.85rem;
+  }
+
+  .history-list th,
+  .history-list td {
+    padding: 12px;
+    font-size: 0.8rem;
+  }
+
+  .history-list {
+    border-radius: 10px;
+    overflow: hidden;
+  }
+}
+
+@media (min-width: 769px) {
+  .stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .history-list table {
+    min-width: auto;
+  }
+}
