@@ -109,9 +109,6 @@ const LandingPage = () => {
                   <li key={index}>{feature}</li>
                 ))}
               </ul>
-              <Link to="/login" className={`btn ${plan.popular ? 'btn-primary' : 'btn-outline'} btn-block`}>
-                Choose {plan.name}
-              </Link>
             </div>
           ))}
         </div>

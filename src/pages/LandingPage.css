@@ -188,10 +188,11 @@
 
 .plans-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
   max-width: 1000px;
   margin: 0 auto;
+  align-items: start;
 }
 
 .plan-card {
@@ -199,6 +200,8 @@
   padding: 2.5rem;
   position: relative;
   border: 1px solid #1a1a1a;
+  display: flex;
+  flex-direction: column;
 }
 
 .plan-card:hover {
@@ -207,6 +210,10 @@
 
 .plan-card.popular {
   border-color: #6366f1;
+}
+
+.plan-features {
+  flex-grow: 1;
 }
 
 .popular-badge {
@@ -367,6 +374,13 @@
 }
 
 /* Responsive */
+@media (max-width: 968px) {
+  .plans-grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+  }
+}
+
 @media (max-width: 768px) {
   .nav-links {
     display: none;
