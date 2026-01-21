@@ -1,10 +1,10 @@
 import { Button } from "./ui/button";
 import { useNavigate } from "react-router-dom";
-import { isAuthenticated } from "../lib/api";
+import { useAuth } from "../auth/AuthContext";
 
 const Header = () => {
   const navigate = useNavigate();
-  const user = JSON.parse(localStorage.getItem('user') || 'null');
+  const { isAuthenticated, logout, user } = useAuth();
 
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
@@ -14,8 +14,8 @@ const Header = () => {
   };
 
   const handleLogout = () => {
-    // Clear auth token and redirect to home
-    localStorage.removeItem('authToken');
+    // Use auth context logout
+    logout();
     navigate("/");
   };
 

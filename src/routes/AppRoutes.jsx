@@ -3,6 +3,8 @@ import { useAuth } from '../auth/AuthContext';
 
 import Login from '../auth/Login';
 import ResetPassword from '../auth/ResetPassword';
+import Register from '../auth/Register';
+import Homepage from '../pages/Homepage';
 
 import AdminRoute from './AdminRoute';
 import UserRoute from './UserRoute';
@@ -13,6 +15,7 @@ import MemberForm from '../admin/members/MemberForm';
 import MemberDetails from '../admin/members/MemberDetails';
 import AttendanceList from '../admin/attendance/AttendanceList';
 import SummaryReport from '../admin/reports/SummaryReport';
+import AdminInvites from '../admin/invites/AdminInvites';
 
 import UserDashboard from '../user/dashboard/UserDashboard';
 import CheckIn from '../user/attendance/CheckIn';
@@ -39,6 +42,7 @@ const AppRoutes = () => {
           )
         }
       />
+      <Route path="/register" element={isAuthenticated() ? <Navigate to="/" replace /> : <Register />} />
       <Route path="/reset-password" element={<ResetPassword />} />
 
       {/* Admin routes */}
@@ -51,6 +55,7 @@ const AppRoutes = () => {
         <Route path="members/:id/edit" element={<MemberForm />} />
         <Route path="attendance" element={<AttendanceList />} />
         <Route path="reports" element={<SummaryReport />} />
+        <Route path="invites" element={<AdminInvites />} />
       </Route>
 
       {/* User routes */}
@@ -69,7 +74,7 @@ const AppRoutes = () => {
           isAuthenticated() ? (
             <Navigate to={isAdmin() ? '/admin/dashboard' : '/dashboard'} replace />
           ) : (
-            <Navigate to="/login" replace />
+            <Homepage />
           )
         }
       />
