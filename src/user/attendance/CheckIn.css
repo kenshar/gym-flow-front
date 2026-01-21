@@ -1,141 +1,79 @@
+/* Check-in Container */
 .checkin-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: calc(100vh - 100px);
-  padding: 20px;
+  @apply max-w-lg mx-auto py-8;
 }
 
 .checkin-card {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 40px;
-  max-width: 500px;
-  width: 100%;
+  @apply bg-white border-2 border-dark-200 p-8;
 }
 
 .checkin-card h2 {
-  text-align: center;
-  margin-bottom: 30px;
-  color: #333;
+  @apply text-xl font-bold text-center mb-8 uppercase tracking-wide;
 }
 
+/* Quick Check-in Section */
 .quick-checkin-section {
-  text-align: center;
-  margin-bottom: 20px;
+  @apply text-center mb-8 pb-8 border-b-2 border-dark-200;
 }
 
 .quick-checkin-section h3 {
-  color: #555;
-  margin-bottom: 15px;
-  font-size: 1.2rem;
+  @apply text-lg font-medium text-dark-900 mb-4;
 }
 
 .quick-checkin-btn {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  border: none;
-  padding: 15px 40px;
-  border-radius: 8px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+  @apply w-full bg-dark-900 text-white py-4 px-6 text-sm font-semibold uppercase tracking-wider border-2 border-dark-900 transition-all duration-200 cursor-pointer;
 }
 
 .quick-checkin-btn:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(102, 126, 234, 0.4);
+  @apply bg-dark-800 border-dark-800;
 }
 
 .quick-checkin-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
+  @apply opacity-50 cursor-not-allowed;
 }
 
+/* Divider */
 .divider {
-  text-align: center;
-  margin: 30px 0;
-  position: relative;
+  @apply relative text-center my-6;
 }
 
 .divider::before {
   content: '';
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: #e0e0e0;
+  @apply absolute left-0 top-1/2 w-full h-0.5 bg-dark-200 -translate-y-1/2;
 }
 
 .divider span {
-  background: white;
-  padding: 0 15px;
-  position: relative;
-  color: #999;
-  font-size: 0.9rem;
+  @apply relative bg-white px-4 text-dark-500 text-sm uppercase tracking-wider;
 }
 
+/* Check-in Form */
 .checkin-form {
-  margin-top: 20px;
+  @apply space-y-4;
 }
 
-.form-group {
-  margin-bottom: 20px;
+.checkin-form .form-group label {
+  @apply block text-xs font-semibold uppercase tracking-wider text-dark-600 mb-2;
 }
 
-.form-group label {
-  display: block;
-  margin-bottom: 8px;
-  color: #555;
-  font-weight: 500;
-}
-
-.form-group input {
-  width: 100%;
-  padding: 12px;
-  border: 2px solid #e0e0e0;
-  border-radius: 8px;
-  font-size: 1rem;
-  transition: border-color 0.3s;
-}
-
-.form-group input:focus {
-  outline: none;
-  border-color: #667eea;
+.checkin-form .form-group input {
+  @apply w-full px-4 py-3 border-2 border-dark-200 text-sm focus:outline-none focus:border-dark-900 transition-colors;
 }
 
 .submit-btn {
-  width: 100%;
-  background: #667eea;
-  color: white;
-  border: none;
-  padding: 14px;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.3s;
+  @apply w-full bg-transparent text-dark-900 py-3 px-6 text-sm font-semibold uppercase tracking-wider border-2 border-dark-300 transition-all duration-200 cursor-pointer;
 }
 
 .submit-btn:hover:not(:disabled) {
-  background: #5568d3;
+  @apply bg-dark-100 border-dark-400;
 }
 
 .submit-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
+  @apply opacity-50 cursor-not-allowed;
 }
 
+/* Alert Messages */
 .alert {
-  margin-top: 20px;
-  padding: 15px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  @apply mt-6 p-4 flex items-center gap-3 text-sm;
   animation: slideIn 0.3s ease-out;
 }
 
@@ -150,19 +88,14 @@
   }
 }
 
+.alert .icon {
+  @apply text-lg font-bold;
+}
+
 .alert-success {
-  background: #d4edda;
-  color: #155724;
-  border: 1px solid #c3e6cb;
+  @apply bg-green-50 text-green-800 border-l-4 border-green-600;
 }
 
 .alert-error {
-  background: #f8d7da;
-  color: #721c24;
-  border: 1px solid #f5c6cb;
-}
-
-.alert .icon {
-  font-size: 1.2rem;
-  font-weight: bold;
+  @apply bg-red-50 text-red-800 border-l-4 border-red-600;
 }
