@@ -4,6 +4,7 @@ import { useAuth } from '../auth/AuthContext';
 import LandingPage from '../pages/LandingPage';
 import Login from '../auth/Login';
 import ResetPassword from '../auth/ResetPassword';
+import SignupForm from '../auth/SignupForm';
 
 import AdminRoute from './AdminRoute';
 import UserRoute from './UserRoute';
@@ -12,6 +13,7 @@ import AdminDashboard from '../admin/dashboard/AdminDashboard';
 import MembersList from '../admin/members/MembersList';
 import MemberForm from '../admin/members/MemberForm';
 import MemberDetails from '../admin/members/MemberDetails';
+import MemberRequests from '../admin/members/MemberRequests';
 import AttendanceList from '../admin/attendance/AttendanceList';
 import SummaryReport from '../admin/reports/SummaryReport';
 
@@ -41,6 +43,7 @@ const AppRoutes = () => {
         }
       />
       <Route path="/reset-password" element={<ResetPassword />} />
+      <Route path="/signup" element={<SignupForm />} />
 
       {/* Admin routes */}
       <Route path="/admin" element={<AdminRoute />}>
@@ -50,6 +53,7 @@ const AppRoutes = () => {
         <Route path="members/new" element={<MemberForm />} />
         <Route path="members/:id" element={<MemberDetails />} />
         <Route path="members/:id/edit" element={<MemberForm />} />
+        <Route path="member-requests" element={<MemberRequests />} />
         <Route path="attendance" element={<AttendanceList />} />
         <Route path="reports" element={<SummaryReport />} />
       </Route>

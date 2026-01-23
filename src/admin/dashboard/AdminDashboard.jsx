@@ -110,6 +110,9 @@ const AdminDashboard = () => {
             <Link to="/admin/members/new" className="btn btn-secondary">
               Add New Member
             </Link>
+            <Link to="/admin/member-requests" className="btn btn-secondary">
+              Member Signup Requests
+            </Link>
             <Link to="/admin/reports" className="btn btn-secondary">
               View Reports
             </Link>
